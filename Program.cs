@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using myCrudC_.Database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Conexion con la base de datos
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("ConexionDb"),ServerVersion.Parse("8.0.2-mysql")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
